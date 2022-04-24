@@ -10,6 +10,8 @@ namespace bk_restore
     {
         public static string CREATE_DEVICE =
                 "EXEC sys.sp_addumpdevice @devtype = 'disk', @logicalname = '{0}', @physicalname = N'{1}'";
+        public static string DELETE_DEVICE =
+            "EXEC sp_dropdevice '{0}', 'delfile' ";
         public static string BACKUP =
             "BACKUP DATABASE [{0}] TO [{1}]";
         public static string BACKUP_WITH_INIT =

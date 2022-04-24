@@ -38,7 +38,6 @@
             this.btnDevice = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
-            this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -74,6 +73,7 @@
             this.cmsDatabase = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.bttCreateDevice = new System.Windows.Forms.ToolStripMenuItem();
             this.bttBackup = new System.Windows.Forms.ToolStripMenuItem();
+            this.bttDeleteDevice = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsdatabases = new System.Windows.Forms.BindingSource(this.components);
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.bdsDevices = new System.Windows.Forms.BindingSource(this.components);
@@ -109,8 +109,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
-            this.bar3});
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -125,7 +124,6 @@
             this.btnExit});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 6;
-            this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
             // 
@@ -192,18 +190,6 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
             // 
-            // bar3
-            // 
-            this.bar3.BarName = "Status bar";
-            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.Text = "Status bar";
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -216,9 +202,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 648);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 601);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1306, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1306, 0);
             // 
             // barDockControlLeft
             // 
@@ -226,7 +212,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 561);
             // 
             // barDockControlRight
             // 
@@ -234,10 +220,13 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1306, 40);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 561);
             // 
             // gcBackup
             // 
+            this.gcBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gcBackup.ContextMenuStrip = this.cmsBackupRow;
             this.gcBackup.DataSource = this.bdsSTTBackup;
             this.gcBackup.EmbeddedNavigator.Buttons.Edit.Enabled = false;
@@ -249,6 +238,7 @@
             this.gcBackup.TabIndex = 5;
             this.gcBackup.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.gcBackup.Click += new System.EventHandler(this.gcBackup_Click);
             // 
             // cmsBackupRow
             // 
@@ -256,7 +246,7 @@
             this.bttRestore,
             this.bttDelete});
             this.cmsBackupRow.Name = "cmsBackupRow";
-            this.cmsBackupRow.Size = new System.Drawing.Size(181, 70);
+            this.cmsBackupRow.Size = new System.Drawing.Size(114, 48);
             // 
             // bttRestore
             // 
@@ -264,13 +254,15 @@
             this.bttRestore.Name = "bttRestore";
             this.bttRestore.Size = new System.Drawing.Size(113, 22);
             this.bttRestore.Text = "Restore";
+            this.bttRestore.Click += new System.EventHandler(this.bttRestore_Click);
             // 
             // bttDelete
             // 
             this.bttDelete.Image = global::bk_restore.Properties.Resources.icons8_delete_trash_32;
             this.bttDelete.Name = "bttDelete";
-            this.bttDelete.Size = new System.Drawing.Size(180, 22);
+            this.bttDelete.Size = new System.Drawing.Size(113, 22);
             this.bttDelete.Text = "Delete";
+            this.bttDelete.Click += new System.EventHandler(this.bttDelete_Click);
             // 
             // bdsSTTBackup
             // 
@@ -410,9 +402,10 @@
             this.panel2.Controls.Add(this.tePickTime);
             this.panel2.Controls.Add(this.lbTimeRestore);
             this.panel2.Controls.Add(this.dePickDate);
-            this.panel2.Location = new System.Drawing.Point(316, 428);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(310, 381);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(990, 220);
+            this.panel2.Size = new System.Drawing.Size(996, 220);
             this.panel2.TabIndex = 11;
             // 
             // cbDeleteOldBackUp
@@ -421,9 +414,9 @@
             this.cbDeleteOldBackUp.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.cbDeleteOldBackUp.Location = new System.Drawing.Point(19, 14);
             this.cbDeleteOldBackUp.Name = "cbDeleteOldBackUp";
-            this.cbDeleteOldBackUp.Size = new System.Drawing.Size(314, 17);
+            this.cbDeleteOldBackUp.Size = new System.Drawing.Size(320, 17);
             this.cbDeleteOldBackUp.TabIndex = 11;
-            this.cbDeleteOldBackUp.Text = "Xóa tất cả các bản sao cũ trong File trước khi sao lư bản mới";
+            this.cbDeleteOldBackUp.Text = "Xóa tất cả các bản sao cũ trong File trước khi sao lưu bản mới";
             this.cbDeleteOldBackUp.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.cbDeleteOldBackUp.UseVisualStyleBackColor = true;
             // 
@@ -482,33 +475,45 @@
             this.gcDatabases.Location = new System.Drawing.Point(0, 0);
             this.gcDatabases.MainView = this.gvDatabases;
             this.gcDatabases.Name = "gcDatabases";
-            this.gcDatabases.Size = new System.Drawing.Size(310, 608);
+            this.gcDatabases.Size = new System.Drawing.Size(310, 561);
             this.gcDatabases.TabIndex = 6;
             this.gcDatabases.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDatabases});
+            this.gcDatabases.Click += new System.EventHandler(this.gcDatabases_Click);
             // 
             // cmsDatabase
             // 
             this.cmsDatabase.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bttCreateDevice,
-            this.bttBackup});
+            this.bttBackup,
+            this.bttDeleteDevice});
             this.cmsDatabase.Name = "cmsDatabase";
-            this.cmsDatabase.Size = new System.Drawing.Size(131, 48);
+            this.cmsDatabase.Size = new System.Drawing.Size(132, 70);
             this.cmsDatabase.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // bttCreateDevice
             // 
             this.bttCreateDevice.Image = global::bk_restore.Properties.Resources.icons8_cloud_storage_32;
             this.bttCreateDevice.Name = "bttCreateDevice";
-            this.bttCreateDevice.Size = new System.Drawing.Size(180, 22);
+            this.bttCreateDevice.Size = new System.Drawing.Size(131, 22);
             this.bttCreateDevice.Text = "Tạo device";
+            this.bttCreateDevice.Click += new System.EventHandler(this.bttCreateDevice_Click);
             // 
             // bttBackup
             // 
             this.bttBackup.Image = global::bk_restore.Properties.Resources.icons8_cloud_backup_restore_32;
             this.bttBackup.Name = "bttBackup";
-            this.bttBackup.Size = new System.Drawing.Size(180, 22);
+            this.bttBackup.Size = new System.Drawing.Size(131, 22);
             this.bttBackup.Text = "Sao lưu";
+            this.bttBackup.Click += new System.EventHandler(this.bttBackup_Click);
+            // 
+            // bttDeleteDevice
+            // 
+            this.bttDeleteDevice.Image = global::bk_restore.Properties.Resources.icons8_delete_trash_32;
+            this.bttDeleteDevice.Name = "bttDeleteDevice";
+            this.bttDeleteDevice.Size = new System.Drawing.Size(131, 22);
+            this.bttDeleteDevice.Text = "Xóa device";
+            this.bttDeleteDevice.Click += new System.EventHandler(this.bttDeleteDevice_Click);
             // 
             // bdsdatabases
             // 
@@ -522,7 +527,7 @@
             this.gridSplitContainer1.Location = new System.Drawing.Point(0, 40);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gcDatabases);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(310, 608);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(310, 561);
             this.gridSplitContainer1.TabIndex = 16;
             // 
             // bdsDevices
@@ -551,7 +556,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1306, 668);
+            this.ClientSize = new System.Drawing.Size(1306, 601);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gridSplitContainer1);
@@ -597,7 +602,6 @@
 
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -646,6 +650,7 @@
         private System.Windows.Forms.ContextMenuStrip cmsBackupRow;
         private System.Windows.Forms.ToolStripMenuItem bttRestore;
         private System.Windows.Forms.ToolStripMenuItem bttDelete;
+        private System.Windows.Forms.ToolStripMenuItem bttDeleteDevice;
     }
 }
 

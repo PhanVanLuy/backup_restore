@@ -121,8 +121,11 @@
     <value>397, 21</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>152</value>
+    <value>77</value>
   </metadata>
+  <data name="neHuongdan.EditValue" xml:space="preserve">
+    <value>Hướng dẫn: Ngày giờ ta nhập vào là thời điểm ta muốn phục hòi cơ sở dữ liệu về thời điểm đó. Thời điểm này phải sau thời điểm của bản sao mà ta đã chọn trên lưới và trước thời điểm hiện tại ít nhât 1 phút.</value>
+  </data>
   <metadata name="cmsDatabase.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>404, 100</value>
   </metadata>
@@ -138,15 +141,9 @@
   <metadata name="bdsSTTBackup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1047, 61</value>
   </metadata>
-  <metadata name="tempdbDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>392, 61</value>
-  </metadata>
   <metadata name="bdsBackupset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>693, 25</value>
   </metadata>
-  <data name="neHuongdan.EditValue" xml:space="preserve">
-    <value>Hướng dẫn: Ngày giờ ta nhập vào là thời điểm ta muốn phục hòi cơ sở dữ liệu về thời điểm đó. Thời điểm này phải sau thời điểm của bản sao mà ta đã chọn trên lưới và trước thời điểm hiện tại ít nhât 1 phút.</value>
-  </data>
   <metadata name="databasesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>

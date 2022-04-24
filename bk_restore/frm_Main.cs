@@ -56,23 +56,28 @@ namespace bk_restore
 
             string note = XtraInputBox.Show(this, "Nhập diễn giải:", "Tạo Back up", string.Empty);//lấy diễn giải
 
-            if (note != string.Empty)
+            if (note != string.Empty && !cbDeleteOldBackUp.Checked)
             {
                 queryString += $" WITH NAME = N'{note}'";
             }
+            else if(note != string.Empty && cbDeleteOldBackUp.Checked)
+            {
+                queryString += $" , NAME = N'{note}'";
+            }
             else { return; }
             
-            int resultExec = Program.ExecSqlNonQuery(queryString, Program.ConnectionString);
+            int resultExec = Program.ExecSqlNonQuery(queryString , Program.ConnectionString);
             if (resultExec != 0)
             {
-
                 return;
             }
             else
             {
+
                 XtraMessageBox.Show("Thực hiện sao lưu thành công", "Thành công!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.sp_BackupTableAdapter.Fill(this.tempdbDataSet.SP_STT_BACKUP, dbName);
-                btnRestore.Enabled = true;
+                toggleBtnRestore(true);
+                cbDeleteOldBackUp.Checked = false;
             }
 
         }
@@ -91,7 +96,7 @@ namespace bk_restore
                     string restore_history_id = ((DataRowView)bdsRestoreHistory[index])["restore_history_id"].ToString();
                     queryDeleteRestoreHistory += string.Format(Queries.DELETE_RESTORE_HISTORY, restore_history_id);
                 }
-                query = queryDeleteRestoreHistory + query;
+                query += queryDeleteRestoreHistory ;
             }
          
             return Program.ExecSqlNonQuery(query, Program.ConnectionString);
@@ -120,7 +125,7 @@ namespace bk_restore
         {
             string dbName = tbDatabaseName.Text;
 
-            if (String.IsNullOrEmpty(dbName))
+            if (string.IsNullOrEmpty(dbName))
             {
                 return;
             }
@@ -135,7 +140,6 @@ namespace bk_restore
             {
                 stateIsExistDevice(true);//true: co device roi
             }
-            neHuongdan.Text =(string)bdsDevices.Find("name", "deviceOf" + dbName).ToString();
 
         }
 
@@ -146,18 +150,20 @@ namespace bk_restore
 
             btnBackup.Enabled = isExistDevice;
             bttBackup.Enabled = isExistDevice;
+            bttDeleteDevice.Enabled = isExistDevice;
+            
+            backupsetTableAdapter.Fill(tempdbDataSet.backupset, tbDatabaseName.Text);
 
-            if (bdsBackupset.Count == 0 && isExistDevice)
+            if (bdsBackupset.Count > 0 && isExistDevice)
             {
-                btnRestore.Enabled = true;
-                bttRestore.Enabled = true;
+                toggleBtnRestore(true);
             }
             else
             {
-                btnRestore.Enabled = false;
-                bttRestore.Enabled = false;
+                toggleBtnRestore(false);
 
             }
+            
         }
 
         private string formatDeviceName(string dbName)
@@ -320,13 +326,7 @@ namespace bk_restore
             {
                 XtraMessageBox.Show("Tạo device thành công", "SUCCESS",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.backup_devicesTableAdapter.Fill(this.tempdbDataSet.backup_devices);
-                int backupPosition = bdsdatabases.Position;
-                neHuongdan.Visible = true;
-                neHuongdan.Text = backupPosition.ToString();
-                bdsdatabases.MoveFirst();
-                bdsdatabases.Position = backupPosition;
-
-                neHuongdan.Text += "/"+backupPosition.ToString();
+                stateIsExistDevice(true);
             }
         }
 
@@ -349,7 +349,7 @@ namespace bk_restore
                 neHuongdan.Visible = true;
 
                 dePickDate.DateTime = DateTime.Now;
-                tePickTime.Time = DateTime.Now;
+                tePickTime.Time = DateTime.Now.AddMinutes(-1);
             }
             else
             {
@@ -366,6 +366,112 @@ namespace bk_restore
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void bttDelete_Click(object sender, EventArgs e)
+        {
+            if(XtraMessageBox.Show("Bạn chắc chắn muốn xóa file backup này?", "QUESTION",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
+
+            int backup_set_id= int.Parse(((DataRowView)bdsSTTBackup.Current)["backup_set_id"].ToString());
+            if (deleteBackup(backup_set_id) == 0)
+            {
+                XtraMessageBox.Show("Đã xóa file backup", "SUCCESS",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                XtraMessageBox.Show("Xóa file backup thất bại", "FAIL",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            sp_BackupTableAdapter.Fill(tempdbDataSet.SP_STT_BACKUP, tbDatabaseName.Text);
+
+            if (bdsBackupset.Count <= 0) { toggleBtnRestore(false); } else { toggleBtnRestore(true); }
+            
+        }
+        private void toggleBtnRestore(bool isOn)
+        {
+           
+            btnRestore.Enabled = isOn;
+            bttRestore.Enabled = isOn;
+            bciRestoreWithTime.Enabled = isOn;
+            if(isOn)
+            {
+                bttDeleteDevice.Enabled = isOn;
+            }
+        }
+
+        private int deleteBackup(int backup_set_id)
+        {
+
+            restore_historyTableAdapter.Fill(tempdbDataSet.restore_history, backup_set_id);
+
+            string query = string.Format(Queries.DELETE_BACKUP, backup_set_id);
+            int restoreCount = bdsRestoreHistory.Count;
+           
+            if (restoreCount > 0)
+            {
+                string queryDelete = "";
+                string history_id;
+                for (int i = 0; i<restoreCount; i++)
+                {
+                    history_id= ((DataRowView)bdsRestoreHistory[i])["restore_history_id"].ToString();
+                    queryDelete += string.Format(Queries.DELETE_RESTORE_HISTORY, history_id);
+                }
+
+                query = queryDelete+ query;//xoa history truoc
+            }
+           
+            return Program.ExecSqlNonQuery(query, Program.ConnectionString);
+        }
+
+        private void bttRestore_Click(object sender, EventArgs e)
+        {
+            btnRestore.PerformClick();
+        }
+
+        private void bttDeleteDevice_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Bạn chắc chắn muốn xóa file backup này?", "QUESTION",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
+            string query = string.Format(Queries.DELETE_DEVICE,formatDeviceName(tbDatabaseName.Text));
+
+            if (Program.ExecSqlNonQuery(query, Program.ConnectionString)==0)
+            {
+                XtraMessageBox.Show("Đã xóa device thành công", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                XtraMessageBox.Show("Xóa device thất  bại", "FAIL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            stateIsExistDevice(false);
+        }
+
+        private void bttCreateDevice_Click(object sender, EventArgs e)
+        {
+            btnDevice.PerformClick();
+        }
+
+        private void bttBackup_Click(object sender, EventArgs e)
+        {
+            btnBackup.PerformClick();
+        }
+
+        private void gcDatabases_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gcBackup_Click(object sender, EventArgs e)
         {
 
         }

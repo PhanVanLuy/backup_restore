@@ -105,9 +105,9 @@
             // 
             this.pb_loading.BackColor = System.Drawing.Color.Transparent;
             this.pb_loading.Image = global::bk_restore.Properties.Resources.kOnzy;
-            this.pb_loading.Location = new System.Drawing.Point(237, 89);
+            this.pb_loading.Location = new System.Drawing.Point(243, 80);
             this.pb_loading.Name = "pb_loading";
-            this.pb_loading.Size = new System.Drawing.Size(75, 75);
+            this.pb_loading.Size = new System.Drawing.Size(71, 62);
             this.pb_loading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_loading.TabIndex = 4;
             this.pb_loading.TabStop = false;
@@ -120,9 +120,9 @@
             this.btnConnect.ImageOptions.Image = global::bk_restore.Properties.Resources.icons8_connected_32;
             this.btnConnect.Location = new System.Drawing.Point(126, 192);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(87, 31);
+            this.btnConnect.Size = new System.Drawing.Size(99, 31);
             this.btnConnect.TabIndex = 5;
-            this.btnConnect.Text = "Login";
+            this.btnConnect.Text = "Đăng nhập";
             this.btnConnect.Click += new System.EventHandler(this.login_Click);
             // 
             // btnExit
@@ -134,7 +134,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(87, 31);
             this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Thoát";
             this.btnExit.Click += new System.EventHandler(this.btnExit1_Click);
             // 
             // frm_Login
