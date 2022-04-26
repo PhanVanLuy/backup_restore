@@ -121,7 +121,7 @@
     <value>397, 21</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>77</value>
+    <value>139</value>
   </metadata>
   <data name="neHuongdan.EditValue" xml:space="preserve">
     <value>Hướng dẫn: Ngày giờ ta nhập vào là thời điểm ta muốn phục hòi cơ sở dữ liệu về thời điểm đó. Thời điểm này phải sau thời điểm của bản sao mà ta đã chọn trên lưới và trước thời điểm hiện tại ít nhât 1 phút.</value>
@@ -138,11 +138,11 @@
   <metadata name="cmsBackupRow.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>528, 100</value>
   </metadata>
-  <metadata name="bdsSTTBackup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="bdsPositionBackup.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1047, 61</value>
   </metadata>
   <metadata name="bdsBackupset.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>693, 25</value>
+    <value>695, 57</value>
   </metadata>
   <metadata name="databasesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>

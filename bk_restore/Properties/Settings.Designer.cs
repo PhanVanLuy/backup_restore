@@ -23,25 +23,25 @@ namespace bk_restore.Properties {
             }
         }
         
-        //[global::System.Configuration.ApplicationScopedSettingAttribute()]
-        //[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        //[global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        //[global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-7F2OHHAE;Initial Catalog=QLDSV_TC;Integrated Security=True")]
-        //public string QLDSV_TCConnectionString {
-        //    get {
-        //        return ((string)(this["QLDSV_TCConnectionString"]));
-        //    }
-        //}
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-7F2OHHAE;Initial Catalog=QLDSV_TC;Integrated Security=True")]
+        public string QLDSV_TCConnectionString {
+            get {
+                return ((string)(this["QLDSV_TCConnectionString"]));
+            }
+        }
         
-        //[global::System.Configuration.ApplicationScopedSettingAttribute()]
-        //[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        //[global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        //[global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-7F2OHHAE;Integrated Security=True")]
-        //public string ConnectionString {
-        //    get {
-        //        return ((string)(this["ConnectionString"]));
-        //    }
-        //}
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-7F2OHHAE;Integrated Security=True")]
+        public string ConnectionString {
+            get {
+                return ((string)(this["ConnectionString"]));
+            }
+        }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -50,6 +50,42 @@ namespace bk_restore.Properties {
         public string ConnectionStringTemdb {
             get {
                 return ((string)(this["ConnectionStringTemdb"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Username {
+            get {
+                return ((string)(this["Username"]));
+            }
+            set {
+                this["Username"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Password {
+            get {
+                return ((string)(this["Password"]));
+            }
+            set {
+                this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ServerName {
+            get {
+                return ((string)(this["ServerName"]));
+            }
+            set {
+                this["ServerName"] = value;
             }
         }
     }

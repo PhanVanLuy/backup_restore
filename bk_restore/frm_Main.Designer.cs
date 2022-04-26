@@ -46,7 +46,7 @@
             this.cmsBackupRow = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.bttRestore = new System.Windows.Forms.ToolStripMenuItem();
             this.bttDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsSTTBackup = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsPositionBackup = new System.Windows.Forms.BindingSource(this.components);
             this.tempdbDataSet = new bk_restore.tempdbDataSet();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.position = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -79,12 +79,12 @@
             this.bdsDevices = new System.Windows.Forms.BindingSource(this.components);
             this.backup_devicesTableAdapter = new bk_restore.tempdbDataSetTableAdapters.backup_devicesTableAdapter();
             this.bdsRestoreHistory = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_BackupTableAdapter = new bk_restore.tempdbDataSetTableAdapters.SP_STT_BACKUPTableAdapter();
+            this.sp_BackupTableAdapter = new bk_restore.tempdbDataSetTableAdapters.position_backupTableAdapter();
             this.restore_historyTableAdapter = new bk_restore.tempdbDataSetTableAdapters.restore_historyTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcBackup)).BeginInit();
             this.cmsBackupRow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSTTBackup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPositionBackup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempdbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBackupset)).BeginInit();
@@ -228,7 +228,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gcBackup.ContextMenuStrip = this.cmsBackupRow;
-            this.gcBackup.DataSource = this.bdsSTTBackup;
+            this.gcBackup.DataSource = this.bdsPositionBackup;
             this.gcBackup.EmbeddedNavigator.Buttons.Edit.Enabled = false;
             this.gcBackup.Location = new System.Drawing.Point(316, 91);
             this.gcBackup.MainView = this.gridView2;
@@ -264,10 +264,10 @@
             this.bttDelete.Text = "Delete";
             this.bttDelete.Click += new System.EventHandler(this.bttDelete_Click);
             // 
-            // bdsSTTBackup
+            // bdsPositionBackup
             // 
-            this.bdsSTTBackup.DataMember = "SP_STT_BACKUP";
-            this.bdsSTTBackup.DataSource = this.tempdbDataSet;
+            this.bdsPositionBackup.DataMember = "position_backup";
+            this.bdsPositionBackup.DataSource = this.tempdbDataSet;
             // 
             // tempdbDataSet
             // 
@@ -303,6 +303,8 @@
             // colbackup_start_date
             // 
             this.colbackup_start_date.Caption = "Ngày sao lưu";
+            this.colbackup_start_date.DisplayFormat.FormatString = "M/d/yyyy h:mm:ss tt";
+            this.colbackup_start_date.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colbackup_start_date.FieldName = "backup_start_date";
             this.colbackup_start_date.Name = "colbackup_start_date";
             this.colbackup_start_date.Visible = true;
@@ -571,7 +573,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcBackup)).EndInit();
             this.cmsBackupRow.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSTTBackup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsPositionBackup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempdbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBackupset)).EndInit();
@@ -641,8 +643,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colbackup_start_date;
         private DevExpress.XtraGrid.Columns.GridColumn coluser_name;
         private System.Windows.Forms.BindingSource bdsRestoreHistory;
-        private System.Windows.Forms.BindingSource bdsSTTBackup;
-        private tempdbDataSetTableAdapters.SP_STT_BACKUPTableAdapter sp_BackupTableAdapter;
+        private System.Windows.Forms.BindingSource bdsPositionBackup;
         private tempdbDataSetTableAdapters.restore_historyTableAdapter restore_historyTableAdapter;
         private System.Windows.Forms.ContextMenuStrip cmsDatabase;
         private System.Windows.Forms.ToolStripMenuItem bttCreateDevice;
@@ -651,6 +652,7 @@
         private System.Windows.Forms.ToolStripMenuItem bttRestore;
         private System.Windows.Forms.ToolStripMenuItem bttDelete;
         private System.Windows.Forms.ToolStripMenuItem bttDeleteDevice;
+        private tempdbDataSetTableAdapters.position_backupTableAdapter sp_BackupTableAdapter;
     }
 }
 

@@ -32,7 +32,7 @@ namespace bk_restore {
         
         private backup_devicesDataTable tablebackup_devices;
         
-        private SP_STT_BACKUPDataTable tableSP_STT_BACKUP;
+        private position_backupDataTable tableposition_backup;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -74,8 +74,8 @@ namespace bk_restore {
                 if ((ds.Tables["backup_devices"] != null)) {
                     base.Tables.Add(new backup_devicesDataTable(ds.Tables["backup_devices"]));
                 }
-                if ((ds.Tables["SP_STT_BACKUP"] != null)) {
-                    base.Tables.Add(new SP_STT_BACKUPDataTable(ds.Tables["SP_STT_BACKUP"]));
+                if ((ds.Tables["position_backup"] != null)) {
+                    base.Tables.Add(new position_backupDataTable(ds.Tables["position_backup"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -139,9 +139,9 @@ namespace bk_restore {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SP_STT_BACKUPDataTable SP_STT_BACKUP {
+        public position_backupDataTable position_backup {
             get {
-                return this.tableSP_STT_BACKUP;
+                return this.tableposition_backup;
             }
         }
         
@@ -224,8 +224,8 @@ namespace bk_restore {
                 if ((ds.Tables["backup_devices"] != null)) {
                     base.Tables.Add(new backup_devicesDataTable(ds.Tables["backup_devices"]));
                 }
-                if ((ds.Tables["SP_STT_BACKUP"] != null)) {
-                    base.Tables.Add(new SP_STT_BACKUPDataTable(ds.Tables["SP_STT_BACKUP"]));
+                if ((ds.Tables["position_backup"] != null)) {
+                    base.Tables.Add(new position_backupDataTable(ds.Tables["position_backup"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -284,10 +284,10 @@ namespace bk_restore {
                     this.tablebackup_devices.InitVars();
                 }
             }
-            this.tableSP_STT_BACKUP = ((SP_STT_BACKUPDataTable)(base.Tables["SP_STT_BACKUP"]));
+            this.tableposition_backup = ((position_backupDataTable)(base.Tables["position_backup"]));
             if ((initTable == true)) {
-                if ((this.tableSP_STT_BACKUP != null)) {
-                    this.tableSP_STT_BACKUP.InitVars();
+                if ((this.tableposition_backup != null)) {
+                    this.tableposition_backup.InitVars();
                 }
             }
         }
@@ -308,8 +308,8 @@ namespace bk_restore {
             base.Tables.Add(this.tablerestore_history);
             this.tablebackup_devices = new backup_devicesDataTable();
             base.Tables.Add(this.tablebackup_devices);
-            this.tableSP_STT_BACKUP = new SP_STT_BACKUPDataTable();
-            base.Tables.Add(this.tableSP_STT_BACKUP);
+            this.tableposition_backup = new position_backupDataTable();
+            base.Tables.Add(this.tableposition_backup);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -338,7 +338,7 @@ namespace bk_restore {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeSP_STT_BACKUP() {
+        private bool ShouldSerializeposition_backup() {
             return false;
         }
         
@@ -410,7 +410,7 @@ namespace bk_restore {
         public delegate void backup_devicesRowChangeEventHandler(object sender, backup_devicesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void SP_STT_BACKUPRowChangeEventHandler(object sender, SP_STT_BACKUPRowChangeEvent e);
+        public delegate void position_backupRowChangeEventHandler(object sender, position_backupRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1479,7 +1479,7 @@ namespace bk_restore {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SP_STT_BACKUPDataTable : global::System.Data.TypedTableBase<SP_STT_BACKUPRow> {
+        public partial class position_backupDataTable : global::System.Data.TypedTableBase<position_backupRow> {
             
             private global::System.Data.DataColumn columnposition;
             
@@ -1493,8 +1493,8 @@ namespace bk_restore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPDataTable() {
-                this.TableName = "SP_STT_BACKUP";
+            public position_backupDataTable() {
+                this.TableName = "position_backup";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1502,7 +1502,7 @@ namespace bk_restore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal SP_STT_BACKUPDataTable(global::System.Data.DataTable table) {
+            internal position_backupDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1519,7 +1519,7 @@ namespace bk_restore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected SP_STT_BACKUPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected position_backupDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1575,56 +1575,56 @@ namespace bk_restore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPRow this[int index] {
+            public position_backupRow this[int index] {
                 get {
-                    return ((SP_STT_BACKUPRow)(this.Rows[index]));
+                    return ((position_backupRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SP_STT_BACKUPRowChangeEventHandler SP_STT_BACKUPRowChanging;
+            public event position_backupRowChangeEventHandler position_backupRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SP_STT_BACKUPRowChangeEventHandler SP_STT_BACKUPRowChanged;
+            public event position_backupRowChangeEventHandler position_backupRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SP_STT_BACKUPRowChangeEventHandler SP_STT_BACKUPRowDeleting;
+            public event position_backupRowChangeEventHandler position_backupRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SP_STT_BACKUPRowChangeEventHandler SP_STT_BACKUPRowDeleted;
+            public event position_backupRowChangeEventHandler position_backupRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddSP_STT_BACKUPRow(SP_STT_BACKUPRow row) {
+            public void Addposition_backupRow(position_backupRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPRow AddSP_STT_BACKUPRow(int position, string name, System.DateTime backup_start_date, string user_name) {
-                SP_STT_BACKUPRow rowSP_STT_BACKUPRow = ((SP_STT_BACKUPRow)(this.NewRow()));
+            public position_backupRow Addposition_backupRow(int position, string name, System.DateTime backup_start_date, string user_name) {
+                position_backupRow rowposition_backupRow = ((position_backupRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         position,
                         name,
                         backup_start_date,
                         user_name,
                         null};
-                rowSP_STT_BACKUPRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSP_STT_BACKUPRow);
-                return rowSP_STT_BACKUPRow;
+                rowposition_backupRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowposition_backupRow);
+                return rowposition_backupRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPRow FindBybackup_set_id(int backup_set_id) {
-                return ((SP_STT_BACKUPRow)(this.Rows.Find(new object[] {
+            public position_backupRow FindBybackup_set_id(int backup_set_id) {
+                return ((position_backupRow)(this.Rows.Find(new object[] {
                             backup_set_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SP_STT_BACKUPDataTable cln = ((SP_STT_BACKUPDataTable)(base.Clone()));
+                position_backupDataTable cln = ((position_backupDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1632,7 +1632,7 @@ namespace bk_restore {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SP_STT_BACKUPDataTable();
+                return new position_backupDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1672,28 +1672,28 @@ namespace bk_restore {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPRow NewSP_STT_BACKUPRow() {
-                return ((SP_STT_BACKUPRow)(this.NewRow()));
+            public position_backupRow Newposition_backupRow() {
+                return ((position_backupRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SP_STT_BACKUPRow(builder);
+                return new position_backupRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SP_STT_BACKUPRow);
+                return typeof(position_backupRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SP_STT_BACKUPRowChanged != null)) {
-                    this.SP_STT_BACKUPRowChanged(this, new SP_STT_BACKUPRowChangeEvent(((SP_STT_BACKUPRow)(e.Row)), e.Action));
+                if ((this.position_backupRowChanged != null)) {
+                    this.position_backupRowChanged(this, new position_backupRowChangeEvent(((position_backupRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1701,8 +1701,8 @@ namespace bk_restore {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SP_STT_BACKUPRowChanging != null)) {
-                    this.SP_STT_BACKUPRowChanging(this, new SP_STT_BACKUPRowChangeEvent(((SP_STT_BACKUPRow)(e.Row)), e.Action));
+                if ((this.position_backupRowChanging != null)) {
+                    this.position_backupRowChanging(this, new position_backupRowChangeEvent(((position_backupRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1710,8 +1710,8 @@ namespace bk_restore {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SP_STT_BACKUPRowDeleted != null)) {
-                    this.SP_STT_BACKUPRowDeleted(this, new SP_STT_BACKUPRowChangeEvent(((SP_STT_BACKUPRow)(e.Row)), e.Action));
+                if ((this.position_backupRowDeleted != null)) {
+                    this.position_backupRowDeleted(this, new position_backupRowChangeEvent(((position_backupRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1719,14 +1719,14 @@ namespace bk_restore {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SP_STT_BACKUPRowDeleting != null)) {
-                    this.SP_STT_BACKUPRowDeleting(this, new SP_STT_BACKUPRowChangeEvent(((SP_STT_BACKUPRow)(e.Row)), e.Action));
+                if ((this.position_backupRowDeleting != null)) {
+                    this.position_backupRowDeleting(this, new position_backupRowChangeEvent(((position_backupRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveSP_STT_BACKUPRow(SP_STT_BACKUPRow row) {
+            public void Removeposition_backupRow(position_backupRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1753,7 +1753,7 @@ namespace bk_restore {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SP_STT_BACKUPDataTable";
+                attribute2.FixedValue = "position_backupDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1923,15 +1923,15 @@ namespace bk_restore {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SP_STT_BACKUPRow : global::System.Data.DataRow {
+        public partial class position_backupRow : global::System.Data.DataRow {
             
-            private SP_STT_BACKUPDataTable tableSP_STT_BACKUP;
+            private position_backupDataTable tableposition_backup;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal SP_STT_BACKUPRow(global::System.Data.DataRowBuilder rb) : 
+            internal position_backupRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSP_STT_BACKUP = ((SP_STT_BACKUPDataTable)(this.Table));
+                this.tableposition_backup = ((position_backupDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1939,14 +1939,14 @@ namespace bk_restore {
             public int position {
                 get {
                     try {
-                        return ((int)(this[this.tableSP_STT_BACKUP.positionColumn]));
+                        return ((int)(this[this.tableposition_backup.positionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'position\' in table \'SP_STT_BACKUP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'position\' in table \'position_backup\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_STT_BACKUP.positionColumn] = value;
+                    this[this.tableposition_backup.positionColumn] = value;
                 }
             }
             
@@ -1955,14 +1955,14 @@ namespace bk_restore {
             public string name {
                 get {
                     try {
-                        return ((string)(this[this.tableSP_STT_BACKUP.nameColumn]));
+                        return ((string)(this[this.tableposition_backup.nameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'name\' in table \'SP_STT_BACKUP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'name\' in table \'position_backup\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_STT_BACKUP.nameColumn] = value;
+                    this[this.tableposition_backup.nameColumn] = value;
                 }
             }
             
@@ -1971,14 +1971,14 @@ namespace bk_restore {
             public System.DateTime backup_start_date {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableSP_STT_BACKUP.backup_start_dateColumn]));
+                        return ((global::System.DateTime)(this[this.tableposition_backup.backup_start_dateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'backup_start_date\' in table \'SP_STT_BACKUP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'backup_start_date\' in table \'position_backup\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_STT_BACKUP.backup_start_dateColumn] = value;
+                    this[this.tableposition_backup.backup_start_dateColumn] = value;
                 }
             }
             
@@ -1987,14 +1987,14 @@ namespace bk_restore {
             public string user_name {
                 get {
                     try {
-                        return ((string)(this[this.tableSP_STT_BACKUP.user_nameColumn]));
+                        return ((string)(this[this.tableposition_backup.user_nameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'user_name\' in table \'SP_STT_BACKUP\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'user_name\' in table \'position_backup\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSP_STT_BACKUP.user_nameColumn] = value;
+                    this[this.tableposition_backup.user_nameColumn] = value;
                 }
             }
             
@@ -2002,59 +2002,59 @@ namespace bk_restore {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int backup_set_id {
                 get {
-                    return ((int)(this[this.tableSP_STT_BACKUP.backup_set_idColumn]));
+                    return ((int)(this[this.tableposition_backup.backup_set_idColumn]));
                 }
                 set {
-                    this[this.tableSP_STT_BACKUP.backup_set_idColumn] = value;
+                    this[this.tableposition_backup.backup_set_idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IspositionNull() {
-                return this.IsNull(this.tableSP_STT_BACKUP.positionColumn);
+                return this.IsNull(this.tableposition_backup.positionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetpositionNull() {
-                this[this.tableSP_STT_BACKUP.positionColumn] = global::System.Convert.DBNull;
+                this[this.tableposition_backup.positionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsnameNull() {
-                return this.IsNull(this.tableSP_STT_BACKUP.nameColumn);
+                return this.IsNull(this.tableposition_backup.nameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnameNull() {
-                this[this.tableSP_STT_BACKUP.nameColumn] = global::System.Convert.DBNull;
+                this[this.tableposition_backup.nameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isbackup_start_dateNull() {
-                return this.IsNull(this.tableSP_STT_BACKUP.backup_start_dateColumn);
+                return this.IsNull(this.tableposition_backup.backup_start_dateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setbackup_start_dateNull() {
-                this[this.tableSP_STT_BACKUP.backup_start_dateColumn] = global::System.Convert.DBNull;
+                this[this.tableposition_backup.backup_start_dateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isuser_nameNull() {
-                return this.IsNull(this.tableSP_STT_BACKUP.user_nameColumn);
+                return this.IsNull(this.tableposition_backup.user_nameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setuser_nameNull() {
-                this[this.tableSP_STT_BACKUP.user_nameColumn] = global::System.Convert.DBNull;
+                this[this.tableposition_backup.user_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2198,22 +2198,22 @@ namespace bk_restore {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class SP_STT_BACKUPRowChangeEvent : global::System.EventArgs {
+        public class position_backupRowChangeEvent : global::System.EventArgs {
             
-            private SP_STT_BACKUPRow eventRow;
+            private position_backupRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPRowChangeEvent(SP_STT_BACKUPRow row, global::System.Data.DataRowAction action) {
+            public position_backupRowChangeEvent(position_backupRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SP_STT_BACKUPRow Row {
+            public position_backupRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2930,7 +2930,7 @@ namespace bk_restore.tempdbDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SP_STT_BACKUPTableAdapter : global::System.ComponentModel.Component {
+    public partial class position_backupTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -2944,7 +2944,7 @@ namespace bk_restore.tempdbDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public SP_STT_BACKUPTableAdapter() {
+        public position_backupTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3041,7 +3041,7 @@ namespace bk_restore.tempdbDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SP_STT_BACKUP";
+            tableMapping.DataSetTable = "position_backup";
             tableMapping.ColumnMappings.Add("position", "position");
             tableMapping.ColumnMappings.Add("name", "name");
             tableMapping.ColumnMappings.Add("backup_start_date", "backup_start_date");
@@ -3080,7 +3080,7 @@ ORDER BY position DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(tempdbDataSet.SP_STT_BACKUPDataTable dataTable, string dbName) {
+        public virtual int Fill(tempdbDataSet.position_backupDataTable dataTable, string dbName) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((dbName == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3099,7 +3099,7 @@ ORDER BY position DESC";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual tempdbDataSet.SP_STT_BACKUPDataTable GetData(string dbName) {
+        public virtual tempdbDataSet.position_backupDataTable GetData(string dbName) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((dbName == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3107,7 +3107,7 @@ ORDER BY position DESC";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(dbName));
             }
-            tempdbDataSet.SP_STT_BACKUPDataTable dataTable = new tempdbDataSet.SP_STT_BACKUPDataTable();
+            tempdbDataSet.position_backupDataTable dataTable = new tempdbDataSet.position_backupDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

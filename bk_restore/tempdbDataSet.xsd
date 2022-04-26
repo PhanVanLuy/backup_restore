@@ -84,7 +84,7 @@ FROM            sys.backup_devices</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_STT_BACKUPTableAdapter" GeneratorDataComponentClassName="SP_STT_BACKUPTableAdapter" Name="SP_STT_BACKUP" UserDataComponentName="SP_STT_BACKUPTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="position_backupTableAdapter" GeneratorDataComponentClassName="position_backupTableAdapter" Name="position_backup" UserDataComponentName="position_backupTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ConnectionStringTemdb (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
@@ -164,7 +164,7 @@ ORDER BY position DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_STT_BACKUP" msprop:Generator_TableClassName="SP_STT_BACKUPDataTable" msprop:Generator_TableVarName="tableSP_STT_BACKUP" msprop:Generator_TablePropName="SP_STT_BACKUP" msprop:Generator_RowDeletingName="SP_STT_BACKUPRowDeleting" msprop:Generator_RowChangingName="SP_STT_BACKUPRowChanging" msprop:Generator_RowEvHandlerName="SP_STT_BACKUPRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_STT_BACKUPRowDeleted" msprop:Generator_UserTableName="SP_STT_BACKUP" msprop:Generator_RowChangedName="SP_STT_BACKUPRowChanged" msprop:Generator_RowEvArgName="SP_STT_BACKUPRowChangeEvent" msprop:Generator_RowClassName="SP_STT_BACKUPRow">
+        <xs:element name="position_backup" msprop:Generator_TableClassName="position_backupDataTable" msprop:Generator_TableVarName="tableposition_backup" msprop:Generator_TablePropName="position_backup" msprop:Generator_RowDeletingName="position_backupRowDeleting" msprop:Generator_RowChangingName="position_backupRowChanging" msprop:Generator_RowEvHandlerName="position_backupRowChangeEventHandler" msprop:Generator_RowDeletedName="position_backupRowDeleted" msprop:Generator_UserTableName="position_backup" msprop:Generator_RowChangedName="position_backupRowChanged" msprop:Generator_RowEvArgName="position_backupRowChangeEvent" msprop:Generator_RowClassName="position_backupRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="position" msprop:Generator_ColumnVarNameInTable="columnposition" msprop:Generator_ColumnPropNameInRow="position" msprop:Generator_ColumnPropNameInTable="positionColumn" msprop:Generator_UserColumnName="position" type="xs:int" minOccurs="0" />
@@ -201,8 +201,8 @@ ORDER BY position DESC</CommandText>
       <xs:selector xpath=".//mstns:restore_history" />
       <xs:field xpath="mstns:restore_history_id" />
     </xs:unique>
-    <xs:unique name="SP_STT_BACKUP_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:SP_STT_BACKUP" />
+    <xs:unique name="position_backup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:position_backup" />
       <xs:field xpath="mstns:backup_set_id" />
     </xs:unique>
   </xs:element>

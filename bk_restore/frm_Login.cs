@@ -19,7 +19,18 @@ namespace bk_restore
         public frm_Login()
         {
             InitializeComponent();
-            btnConnect.PerformClick();
+            LoadDefaultUser();
+
+        }
+
+        private void LoadDefaultUser()
+        {
+            if (Properties.Settings.Default.Username != string.Empty)
+            {
+                tbUser.Text = Properties.Settings.Default.Username;
+                tbPass.Text = Properties.Settings.Default.Password;
+                cbbServer.Text = Properties.Settings.Default.ServerName;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,10 +83,19 @@ namespace bk_restore
         }
 
         private void login_Click(object sender, EventArgs e)
-        {
+        { 
+
             Program.ServerName = cbbServer.Text;
             Program.UserName = tbUser.Text;
             Program.Password = tbPass.Text;
+            if (checkRemember.Checked)
+            {
+                Properties.Settings.Default.Username = tbUser.Text;
+                Properties.Settings.Default.Password = tbPass.Text;
+                Properties.Settings.Default.ServerName = cbbServer.Text;
+                Properties.Settings.Default.Save();
+            }
+
             if (Program.Connect() == true)
             {
                 frm_main frm_main = new frm_main();
@@ -96,6 +116,11 @@ namespace bk_restore
         private void btnExit1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frm_Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
