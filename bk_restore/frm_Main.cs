@@ -1,12 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace bk_restore
@@ -17,8 +12,35 @@ namespace bk_restore
         {
             InitializeComponent();
             bindingProperties();
+            
+        }
 
+        private void loadPath()
+        {
+            if (Properties.Settings.Default.DefaultPath == string.Empty)
+            {
+                if (XtraMessageBox.Show("Device sẽ được lưu ở: " + Program.DefaultPath
+                    + "\nBạn muốn tiếp tục? (Chọn NO để thay đổi vị trí lưu)", "QUESTION", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    using (var fbd = new FolderBrowserDialog())
+                    {
+                        DialogResult result = fbd.ShowDialog();
 
+                        if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                        {
+                            Properties.Settings.Default.DefaultPath = fbd.SelectedPath;
+                            //string[] files = Directory.GetFiles(fbd.SelectedPath);
+                            //getfile
+                        }
+                    }
+
+                } else
+                {
+                    Properties.Settings.Default.DefaultPath = Program.DefaultPath;
+                }
+                Properties.Settings.Default.Save();
+
+            }
         }
 
         private void bindingProperties()
@@ -110,6 +132,7 @@ namespace bk_restore
         {
 
             loadInit();
+            loadPath();
         }
         void loadInit()
         {
@@ -170,7 +193,7 @@ namespace bk_restore
             return string.Format("deviceOf{0}", dbName);
         }
 
-        private async void btnRestore_ItemClickAsync(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnRestore_ItemClickAsync(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if ("".Equals(tbBackupPosition.Text))
             {
@@ -242,7 +265,7 @@ namespace bk_restore
             string dbName = tbDatabaseName.Text;
             string deviceName = formatDeviceName(dbName);
             string position = tbBackupPosition.Text;
-            string logFilePath = Program.DefaultPath + $"\\{dbName}.trn";
+            string logFilePath = Properties.Settings.Default.DefaultPath + $"\\{dbName}.trn";
 
             string queryString = string.Format(Queries.RESTORE_WITH_TIME,
                                                         dbName, logFilePath, deviceName, position);
@@ -263,7 +286,7 @@ namespace bk_restore
                 return resultExec;
             }
 
-            queryString = string.Format(Queries.RESTORE_WITH_TIME_WITH_STOPAT, dbName, logFilePath, timeStopAt);
+            queryString = string.Format(Queries.RESTORE_WITH_STOPAT, dbName, logFilePath, timeStopAt);
                 resultExec = Program.ExecSqlNonQuery(queryString, Program.ConnectionString);
             
             if (resultExec != 0)
@@ -308,9 +331,12 @@ namespace bk_restore
         private void btnDevice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string deviceName = formatDeviceName(tbDatabaseName.Text);
-            string physicalName = Program.DefaultPath + "\\" + deviceName + ".bak";
+            string physicalName = Properties.Settings.Default.DefaultPath + "\\" + deviceName + ".bak";
+
+
 
             string queryString = string.Format(Queries.CREATE_DEVICE, deviceName, physicalName);
+
 
             int resultExec = Program.ExecSqlNonQuery(queryString, Program.ConnectionString);
 

@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private async System.Threading.Tasks.Task InitializeComponent()
+        private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
@@ -227,10 +227,11 @@
             this.gcBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gcBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.gcBackup.ContextMenuStrip = this.cmsBackupRow;
             this.gcBackup.DataSource = this.bdsPositionBackup;
             this.gcBackup.EmbeddedNavigator.Buttons.Edit.Enabled = false;
-            this.gcBackup.Location = new System.Drawing.Point(316, 91);
+            this.gcBackup.Location = new System.Drawing.Point(310, 91);
             this.gcBackup.MainView = this.gridView2;
             this.gcBackup.MenuManager = this.barManager1;
             this.gcBackup.Name = "gcBackup";

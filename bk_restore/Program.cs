@@ -6,6 +6,7 @@ using DevExpress.UserSkins;
 using DevExpress.Skins;
 using DevExpress.LookAndFeel;
 using System.Data.SqlClient;
+using DevExpress.XtraEditors;
 
 namespace bk_restore
 {
@@ -18,7 +19,7 @@ namespace bk_restore
 
         public static SqlDataAdapter DataAdapter = null;
         public static string TempDatabaseName = "tempdb";
-        public static string DefaultPath = AppDomain.CurrentDomain.BaseDirectory + "\\Devices";
+        public static string DefaultPath = AppDomain.CurrentDomain.BaseDirectory + "Devices";
 
         /// <summary>
         /// The main entry point for the application.
@@ -66,9 +67,7 @@ namespace bk_restore
                     }
                     catch (SqlException ex)
                     {
-                        DialogResult result = 
-                            MessageBox.Show(ex.Message, "Lỗi phát sinh từ câu lệnh query SQL",  MessageBoxButtons.YesNoCancel, MessageBoxIcon.Hand, 
-                            MessageBoxDefaultButton.Button2, MessageBoxOptions.ServiceNotification);
+                        XtraMessageBox.Show("Lỗi phát sinh từ câu lệnh query SQL: "+ ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return ex.State;
                     }
                 }

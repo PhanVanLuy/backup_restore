@@ -30,6 +30,7 @@ namespace bk_restore
                 tbUser.Text = Properties.Settings.Default.Username;
                 tbPass.Text = Properties.Settings.Default.Password;
                 cbbServer.Text = Properties.Settings.Default.ServerName;
+                checkRemember.Checked = true;
             }
         }
 
@@ -84,6 +85,25 @@ namespace bk_restore
 
         private void login_Click(object sender, EventArgs e)
         { 
+            if(cbbServer.Text.Equals(""))
+            {
+                XtraMessageBox.Show("ServerName không được để trống!", "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(tbUser.Text.Equals(""))
+            {
+                XtraMessageBox.Show("Username không được để trống!", "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(tbPass.Text.Equals(""))
+            {
+                XtraMessageBox.Show("Mật khẩu không được để trống!", "ERROR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
 
             Program.ServerName = cbbServer.Text;
             Program.UserName = tbUser.Text;
@@ -93,6 +113,13 @@ namespace bk_restore
                 Properties.Settings.Default.Username = tbUser.Text;
                 Properties.Settings.Default.Password = tbPass.Text;
                 Properties.Settings.Default.ServerName = cbbServer.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.Username = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.ServerName = "";
                 Properties.Settings.Default.Save();
             }
 

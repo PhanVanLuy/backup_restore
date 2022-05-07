@@ -88,5 +88,17 @@ namespace bk_restore.Properties {
                 this["ServerName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultPath {
+            get {
+                return ((string)(this["DefaultPath"]));
+            }
+            set {
+                this["DefaultPath"] = value;
+            }
+        }
     }
 }

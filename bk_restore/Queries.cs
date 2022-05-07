@@ -30,17 +30,17 @@ namespace bk_restore
         //RESTORE
         public static string RESTORE =
             "ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE\n" +
-            //"USE tempdb\n" +
+            "USE tempdb\n" +
             "RESTORE DATABASE [{0}] FROM [{1}] WITH FILE = {2}, REPLACE\n" +
             "ALTER DATABASE [{0}] SET MULTI_USER";
         
         public static string RESTORE_WITH_TIME =
             "ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE\n" +
             "BACKUP LOG [{0}] TO DISK = '{1}' WITH INIT\n" +
-            //"USE tempdb\n" +
+            "USE tempdb\n" +
             "RESTORE DATABASE [{0}] FROM [{2}] WITH FILE = {3}, REPLACE, NORECOVERY\n";
         
-        public static string RESTORE_WITH_TIME_WITH_STOPAT =
+        public static string RESTORE_WITH_STOPAT =
             "RESTORE DATABASE [{0}] FROM DISK = '{1}' WITH STOPAT = '{2}'";
 
         public static string ERROR_RESTORE =
