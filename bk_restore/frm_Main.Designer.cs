@@ -156,7 +156,7 @@
             this.btnRestore.Id = 1;
             this.btnRestore.ImageOptions.Image = global::bk_restore.Properties.Resources.icons8_download_from_cloud_32;
             this.btnRestore.Name = "btnRestore";
-            this.btnRestore.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRestore_ItemClickAsync);
+            this.btnRestore.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRestore_ItemClick);
             // 
             // bciRestoreWithTime
             // 
@@ -247,13 +247,14 @@
             this.bttRestore,
             this.bttDelete});
             this.cmsBackupRow.Name = "cmsBackupRow";
-            this.cmsBackupRow.Size = new System.Drawing.Size(114, 48);
+            this.cmsBackupRow.Size = new System.Drawing.Size(181, 70);
+            this.cmsBackupRow.Opening += new System.ComponentModel.CancelEventHandler(this.cmsBackupRow_Opening);
             // 
             // bttRestore
             // 
             this.bttRestore.Image = global::bk_restore.Properties.Resources.icons8_download_from_cloud_32;
             this.bttRestore.Name = "bttRestore";
-            this.bttRestore.Size = new System.Drawing.Size(113, 22);
+            this.bttRestore.Size = new System.Drawing.Size(180, 22);
             this.bttRestore.Text = "Restore";
             this.bttRestore.Click += new System.EventHandler(this.bttRestore_Click);
             // 
@@ -261,7 +262,7 @@
             // 
             this.bttDelete.Image = global::bk_restore.Properties.Resources.icons8_delete_trash_32;
             this.bttDelete.Name = "bttDelete";
-            this.bttDelete.Size = new System.Drawing.Size(113, 22);
+            this.bttDelete.Size = new System.Drawing.Size(180, 22);
             this.bttDelete.Text = "Delete";
             this.bttDelete.Click += new System.EventHandler(this.bttDelete_Click);
             // 
@@ -284,6 +285,7 @@
             this.coluser_name});
             this.gridView2.GridControl = this.gcBackup;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.Editable = false;
             // 
             // position
             // 

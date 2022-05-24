@@ -13,7 +13,7 @@ namespace bk_restore
             "EXEC sys.sp_addumpdevice @devtype = 'disk', @logicalname = '{0}', @physicalname = N'{1}'";
 
         public static string DELETE_DEVICE =
-            "EXEC sp_dropdevice '{0}', 'delfile' ";
+            "EXEC sp_dropdevice '{0}', 'delfile'";
 
         //BACKUP
         public static string BACKUP =
@@ -26,6 +26,9 @@ namespace bk_restore
           "DELETE FROM msdb.dbo.backupfilegroup WHERE backup_set_id = {0}\n" +
           "DELETE FROM msdb.dbo.backupfile WHERE backup_set_id = {0}\n" +
           "DELETE FROM msdb.dbo.backupset WHERE backup_set_id = {0}\n";
+
+        //public static string DELETE_FILE =
+        //    "EXECUTE master.dbo.xp_delete_file 0,N{0}";
 
         //RESTORE
         public static string RESTORE =
@@ -47,15 +50,17 @@ namespace bk_restore
            "RESTORE DATABASE [{0}] FROM [{1}] WITH FILE = {2}\n" +
            "ALTER DATABASE [{0}] SET MULTI_USER";
 
+
+
+            
         public static string DELETE_RESTORE_HISTORY =
-            "DELETE FROM msdb.dbo.restorefilegroup WHERE restore_history_id = {0}\n" +
-            "DELETE FROM msdb.dbo.restorefile WHERE restore_history_id = {0}\n" +
+            "DELETE FROM msdb.dbo.restorefile WHERE restore_history_id = {0}\n"+
+            "DELETE FROM msdb.dbo.restorefilegroup WHERE restore_history_id = {0}\n"+
             "DELETE FROM msdb.dbo.restorehistory WHERE restore_history_id = {0}\n";
-       
+        //"EXEC msdb.dbo.sp_delete_database_backuphistory @database_name={}";
         //USER
         public static string SET_MULTI_USER =
             "ALTER DATABASE [{0}] SET MULTI_USER";
-
 
 
     }

@@ -12,7 +12,7 @@ namespace bk_restore
         {
             InitializeComponent();
             bindingProperties();
-            
+
         }
 
         private void loadPath()
@@ -29,8 +29,7 @@ namespace bk_restore
                         if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                         {
                             Properties.Settings.Default.DefaultPath = fbd.SelectedPath;
-                            //string[] files = Directory.GetFiles(fbd.SelectedPath);
-                            //getfile
+
                         }
                     }
 
@@ -60,14 +59,15 @@ namespace bk_restore
                                                 "Bạn chắc chắn muốn tiếp tục?", "QUESTION",
                                                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                     return;
-
+                this.backupsetTableAdapter.Fill(tempdbDataSet.backupset, dbName);
                 for (int index = 0; index < bdsBackupset.Count; index++)
                 {
-                    string backup_set_id = ((DataRowView)bdsBackupset[index])["backup_set_id"].ToString();
-                    DeleteBackup(int.Parse(backup_set_id));
+                    int backup_set_id = int.Parse(((DataRowView)bdsBackupset[index])["backup_set_id"].ToString());
+                    deleteBackup(backup_set_id);
                 }
 
-            queryString = string.Format(Queries.BACKUP_WITH_INIT, dbName, deviceName);
+
+                queryString = string.Format(Queries.BACKUP_WITH_INIT, dbName, deviceName);
 
             }
             else
@@ -75,7 +75,7 @@ namespace bk_restore
                 queryString = string.Format(Queries.BACKUP, dbName, deviceName);
             }
 
-            string note = XtraInputBox.Show(this, "Nhập diễn giải:", "Tạo Back up", string.Empty);//lấy diễn giải
+            string note = XtraInputBox.Show(this, "Nhập diễn giải:", "Tạo bản sao lưu", string.Empty);
 
             if (note != string.Empty && !cbDeleteOldBackUp.Checked)
             {
@@ -101,26 +101,6 @@ namespace bk_restore
                 cbDeleteOldBackUp.Checked = false;
             }
 
-        }
-        private int DeleteBackup(int backupSetId)
-        {
-            restore_historyTableAdapter.Fill(tempdbDataSet.restore_history, backupSetId);
-
-            string query = string.Format(Queries.DELETE_BACKUP, backupSetId);
-
-            int restoreCount = bdsRestoreHistory.Count;
-            if (restoreCount > 0)
-            {
-                string queryDeleteRestoreHistory = "";
-                for (int index = 0; index < restoreCount; index++)
-                {
-                    string restore_history_id = ((DataRowView)bdsRestoreHistory[index])["restore_history_id"].ToString();
-                    queryDeleteRestoreHistory += string.Format(Queries.DELETE_RESTORE_HISTORY, restore_history_id);
-                }
-                query += queryDeleteRestoreHistory ;
-            }
-         
-            return Program.ExecSqlNonQuery(query, Program.ConnectionString);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -154,7 +134,7 @@ namespace bk_restore
 
             this.sp_BackupTableAdapter.Fill(this.tempdbDataSet.position_backup, dbName);
 
-            if (bdsDevices.Find("name", "deviceOf" + dbName) < 0)//=-1 thi cho ngdung tao device
+            if (bdsDevices.Find("name", "DEV_" + dbName) < 0)//=-1 thi cho ngdung tao device
             {
                 stateIsExistDevice(false);//false:chua co device
             }
@@ -190,10 +170,10 @@ namespace bk_restore
 
         private string formatDeviceName(string dbName)
         {
-            return string.Format("deviceOf{0}", dbName);
+            return string.Format("DEV_{0}", dbName);
         }
 
-        private void btnRestore_ItemClickAsync(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnRestore_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if ("".Equals(tbBackupPosition.Text))
             {
@@ -213,7 +193,7 @@ namespace bk_restore
                                                     "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                       
-                        int resultExec = RestoreWithTimeAsync(thoiDiemStopAt);
+                        int resultExec = RestoreWithTime(thoiDiemStopAt);
                         if (resultExec == 0)
                         {
                             XtraMessageBox.Show("Phục hồi thành công", "SUCCESS",
@@ -259,7 +239,7 @@ namespace bk_restore
             return resultExec;
         }
 
-        private int RestoreWithTimeAsync(DateTime timeStopAt)
+        private int RestoreWithTime(DateTime timeStopAt)
         {
 
             string dbName = tbDatabaseName.Text;
@@ -269,8 +249,6 @@ namespace bk_restore
 
             string queryString = string.Format(Queries.RESTORE_WITH_TIME,
                                                         dbName, logFilePath, deviceName, position);
-
-         
 
             int resultExec = 0;
                 resultExec = Program.ExecSqlNonQuery(queryString, Program.ConnectionString);
@@ -441,7 +419,7 @@ namespace bk_restore
                     history_id= ((DataRowView)bdsRestoreHistory[i])["restore_history_id"].ToString();
                     queryDelete += string.Format(Queries.DELETE_RESTORE_HISTORY, history_id);
                 }
-                query = queryDelete+ query;//xoa history truoc
+                query = queryDelete + query;//xoa history truoc
             }
            
             return Program.ExecSqlNonQuery(query, Program.ConnectionString);
@@ -501,6 +479,11 @@ namespace bk_restore
         }
 
         private void gcBackup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmsBackupRow_Opening(object sender, CancelEventArgs e)
         {
 
         }

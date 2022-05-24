@@ -67,7 +67,7 @@ namespace bk_restore
                     }
                     catch (SqlException ex)
                     {
-                        XtraMessageBox.Show("Lỗi phát sinh từ câu lệnh query SQL: "+ ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //XtraMessageBox.Show("Lỗi phát sinh từ câu lệnh query SQL: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return ex.State;
                     }
                 }

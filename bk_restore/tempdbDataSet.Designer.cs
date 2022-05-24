@@ -2372,7 +2372,8 @@ namespace bk_restore.tempdbDataSetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT      name, database_id\r\nFROM        sys.databases\r\nWHERE      (database_id" +
-                " >= 5) AND (NOT (name LIKE N\'ReportServer%\'))\r\nORDER BY NAME";
+                " >= 5) AND (NOT (name LIKE N\'ReportServer%\' OR NAME LIKE N\'distribution\'))\r\nORDE" +
+                "R BY NAME";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3063,15 +3064,9 @@ namespace bk_restore.tempdbDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        position, name, backup_start_date, user_name, backup_set_id
-FROM            msdb.dbo.backupset
-WHERE        (database_name = @dbName) AND (type = 'D') AND (backup_set_id >=
-                             (SELECT        MAX(backupset_2.backup_set_id) AS Expr1
-                               FROM            msdb.dbo.backupset AS backupset_2 INNER JOIN
-                                                             (SELECT        MAX(media_set_id) AS max_media_set_id, MIN(position) AS min_position
-                                                               FROM            msdb.dbo.backupset AS backupset_1
-                                                               WHERE        (database_name = @dbName) AND (type = 'D')) AS backupsetfilter ON backupset_2.media_set_id = backupsetfilter.max_media_set_id AND backupset_2.position = backupsetfilter.min_position))
-ORDER BY position DESC";
+            this._commandCollection[0].CommandText = "SELECT        position, name, backup_start_date, user_name, backup_set_id\r\nFROM  " +
+                "          msdb.dbo.backupset\r\nWHERE        (database_name = @dbName) AND (type =" +
+                " \'D\') \r\nORDER BY position DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dbName", global::System.Data.SqlDbType.NVarChar, 128, global::System.Data.ParameterDirection.Input, 0, 0, "database_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
